@@ -32,8 +32,8 @@ file-manager:
           appkey: files1
           source: fileSystem # 暂时只支持本地文件系统
           alias: Files # 目录别名
-          path: /Users/twinkle/Study/elfinder # 映射目录   /D:/elfinder
-          host: http://localhost:8899
+          path: /Users/twinkle/git/elfinder1 # 映射目录   D:/elfinder
+          host: http://localhost:8899 #与映射目录下的相对路径拼接，host可以设置为相对地址，如/download
           _default: true # 是否默认打开
           locale:
           constraint:
@@ -44,8 +44,8 @@ file-manager:
           appkey: files2
           source: fileSystem # 暂时只支持本地文件系统
           alias: Files2 # 目录别名
-          path: /Users/twinkle/Study/elfinder2 # 映射目录   /D:/elfinder
-          host: http://localhost:8898
+          path: /Users/twinkle/git/elfinder2 # 映射目录   /D:/elfinder
+          host: http://localhost:8898 #与映射目录下的相对路径拼接，host可以设置为相对地址，如/download
           _default: true # 是否默认打开
           locale:
           constraint:
