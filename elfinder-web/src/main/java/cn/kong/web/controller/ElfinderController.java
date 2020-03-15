@@ -34,7 +34,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
-@RequestMapping("elfinder/connector")
+@RequestMapping("/connector")
 public class ElfinderController {
 
     private static final Logger logger = LoggerFactory.getLogger(ElfinderController.class);

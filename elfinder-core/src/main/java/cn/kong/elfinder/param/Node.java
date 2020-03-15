@@ -1,14 +1,26 @@
 package cn.kong.elfinder.param;
 
 public class Node {
+	private String appkey;
     private String source;
     private String alias;
     private String path;
+    private String host;
     private Boolean _default;
     private String locale;
     private Constraint constraint;
+    
+    
 
-    public String getSource() {
+    public String getAppkey() {
+		return appkey;
+	}
+
+	public void setAppkey(String appkey) {
+		this.appkey = appkey;
+	}
+
+	public String getSource() {
         return source;
     }
 
@@ -30,6 +42,14 @@ public class Node {
 
     public void setPath(String path) {
         this.path = path;
+    }
+    
+    public String getHost() {
+    	return host;
+    }
+    
+    public void setHost(String host) {
+    	this.host = host;
     }
 
     public Boolean get_default() {

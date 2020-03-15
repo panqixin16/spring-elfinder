@@ -47,7 +47,7 @@ public class ElFinderConfig {
 
         DefaultElfinderStorage defaultElfinderStorage = new DefaultElfinderStorage();
 
-        // creates thumbnail
+        // creates thumbnail  缩略图
         DefaultThumbnailWidth defaultThumbnailWidth = new DefaultThumbnailWidth();
         defaultThumbnailWidth.setThumbnailWidth(elfinderConfiguration.getThumbnail().getWidth().intValue());
 
@@ -64,6 +64,7 @@ public class ElFinderConfig {
 
             final String alias = elfinderConfigurationVolume.getAlias();
             final String path = elfinderConfigurationVolume.getPath();
+            final String appkey = elfinderConfigurationVolume.getAppkey();
             final String source = elfinderConfigurationVolume.getSource();
             final String locale = elfinderConfigurationVolume.getLocale();
             final boolean isLocked = elfinderConfigurationVolume.getConstraint().isLocked();
@@ -71,8 +72,9 @@ public class ElFinderConfig {
             final boolean isWritable = elfinderConfigurationVolume.getConstraint().isWritable();
 
             // creates new volume
-            Volume volume = VolumeSources.of(source).newInstance(alias, path);
-
+//            Volume volume = VolumeSources.of(source).newInstance(alias, path);
+            Volume volume = VolumeSources.of(source).newInstance(alias, path, appkey);
+            
             elfinderVolumes.add(volume);
             elfinderVolumeIds.put(volume, Character.toString(defaultVolumeId));
             elfinderVolumeLocales.put(volume, LocaleUtils.toLocale(locale));

@@ -53,6 +53,10 @@ public enum VolumeSources {
         public VolumeBuilder<?> getVolumeBuilder(String alias, String path) {
             return NIO2FileSystemVolume.builder(alias, Paths.get(ElfinderConfigurationUtils.toURI(path)));
         }
+        
+        public VolumeBuilder<?> getVolumeBuilder(String alias, String path,String appkey) {
+            return NIO2FileSystemVolume.builder(alias, Paths.get(ElfinderConfigurationUtils.toURI(path)), appkey);
+        }
     },
 
 
@@ -88,6 +92,11 @@ public enum VolumeSources {
             throw new VolumeSourceException("Volume source path not informed");
         return getVolumeBuilder(alias, path).build();
     }
+    public Volume newInstance(String alias, String path, String appkey) {
+        if(appkey==null) return newInstance(alias, path);
+        return getVolumeBuilder(alias, path, appkey).build();
+    }
 
     public abstract VolumeBuilder<?> getVolumeBuilder(String alias, String path);
+    public abstract VolumeBuilder<?> getVolumeBuilder(String alias, String path, String appkey);
 }

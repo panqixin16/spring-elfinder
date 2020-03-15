@@ -53,7 +53,8 @@ public class OpenCommand extends AbstractJsonCommand implements ElfinderCommand 
         boolean init = request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_INIT) != null;
         boolean tree = request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_TREE) != null;
         String target = request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_TARGET);
-
+        String appkey = request.getParameter("appkey");
+        
         Map<String, VolumeHandler> files = new LinkedHashMap<>();
         if (init) {
             json.put(ElFinderConstants.ELFINDER_PARAMETER_API, ElFinderConstants.ELFINDER_VERSION_API);
@@ -62,9 +63,18 @@ public class OpenCommand extends AbstractJsonCommand implements ElfinderCommand 
 
         if (tree) {
             for (Volume volume : elfinderStorage.getVolumes()) {
-                VolumeHandler root = new VolumeHandler(volume.getRoot(), elfinderStorage);
-                files.put(root.getHash(), root);
-                addSubFolders(files, root);
+            	if(appkey!=null && !"".equals(appkey)) {
+            		if(appkey.equals(volume.getAppkey())) {
+            			VolumeHandler root = new VolumeHandler(volume.getRoot(), elfinderStorage);
+                        files.put(root.getHash(), root);
+                        addSubFolders(files, root);
+            		}
+            	}else {
+            		VolumeHandler root = new VolumeHandler(volume.getRoot(), elfinderStorage);
+                    files.put(root.getHash(), root);
+                    addSubFolders(files, root);
+            	}
+                
             }
         }
 

@@ -56,6 +56,8 @@ public interface Volume {
 
     String getAlias();
 
+    String getAppkey();
+    
     String getName(Target target);
 
     Target getParent(Target target);

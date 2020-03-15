@@ -57,11 +57,13 @@ public class NIO2FileSystemVolume implements Volume {
     private final String alias;
     private final Path rootDir;
     private final Detector detector;
+    private final String appkey;
 
     private NIO2FileSystemVolume(Builder builder) {
         this.alias = builder.alias;
         this.rootDir = builder.rootDir;
         this.detector = new NIO2FileTypeDetector();
+        this.appkey = builder.appkey;
         createRootDir();
     }
 
@@ -97,6 +99,11 @@ public class NIO2FileSystemVolume implements Volume {
         return alias;
     }
 
+    @Override
+    public String getAppkey() {
+    	return appkey;
+    }
+    
     @Override
     public void createFile(Target target) throws IOException {
         NioHelper.createFile(fromTarget(target));
@@ -243,6 +250,10 @@ public class NIO2FileSystemVolume implements Volume {
         return new NIO2FileSystemVolume.Builder(alias, rootDir);
     }
 
+    public static Builder builder(String alias, Path rootDir, String appkey) {
+        return new NIO2FileSystemVolume.Builder(alias, rootDir, appkey);
+    }
+    
     /**
      * Builder NIO2FileSystemVolume Inner Class
      */
@@ -250,12 +261,19 @@ public class NIO2FileSystemVolume implements Volume {
         // required fields
         private final String alias;
         private final Path rootDir;
+        private final String appkey;
 
         public Builder(String alias, Path rootDir) {
             this.alias = alias;
             this.rootDir = rootDir;
+            this.appkey = null;
         }
 
+        public Builder(String alias, Path rootDir, String appkey) {
+        	this.alias = alias;
+            this.rootDir = rootDir;
+            this.appkey = appkey;
+        }
         @Override
         public NIO2FileSystemVolume build() {
             return new NIO2FileSystemVolume(this);
