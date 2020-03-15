@@ -1,5 +1,5 @@
 
-token: uQ5RHimaxAEgWnZG
+token: mytoken
 
 server:
   tomcat:
@@ -29,9 +29,9 @@ file-manager:
         width: 80 # 缩略图宽
      volumes:
         - Node:
-          appkey: files1
+          appkey: elfinder1
           source: fileSystem # 暂时只支持本地文件系统
-          alias: Files # 目录别名
+          alias: elfinder1 # 目录别名
           path: /Users/twinkle/git/elfinder1 # 映射目录   D:/elfinder
           host: http://localhost:8899 #与映射目录下的相对路径拼接，host可以设置为相对地址，如/download
           _default: true # 是否默认打开
@@ -41,9 +41,9 @@ file-manager:
             readable: true # 是否可读
             writable: true # 是否可写
         - Node:
-          appkey: files2
+          appkey: elfinder2
           source: fileSystem # 暂时只支持本地文件系统
-          alias: Files2 # 目录别名
+          alias: elfinder2 # 目录别名
           path: /Users/twinkle/git/elfinder2 # 映射目录   /D:/elfinder
           host: http://localhost:8898 #与映射目录下的相对路径拼接，host可以设置为相对地址，如/download
           _default: true # 是否默认打开
