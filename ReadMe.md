@@ -1,10 +1,10 @@
 # 基于Spring-boot 和 elfinder 的在线文件管理系统
 
-## 在konglinghai123的基础上做了修改，增加了一些功能
+### 在konglinghai123的基础上做了修改，增加了一些功能
 原git库地址如下：
 https://github.com/konglinghai123/spring-elfinder
 
----
+
 
 ### 效果图
  <p align="center">
@@ -125,7 +125,7 @@ git clone https://github.com/panqixin16/spring-elfinder.git
 - 管理所有的目录 http://localhost:8080/elfinder?token=mytoken#elf_A_
 - 管理指定的目录 添加参数appkey（yml文件配置），http://localhost:8080/elfinder?appkey=elfinder1&token=mytoken#elf_A_
 
-2. vue-files-list： 文件下载里列表，供外部用户访问的
+2. vue-files-list： 文件下载列表页面，主要用于供用户访问,可将网页直接嵌入到供用户访问的网页中
 - 访问地址:  
     i. 以tree方式实现  
     http://localhost:8080/elfinder/dist/#/?appkey=elfinder1#elf_A_  
